@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 const pageTitle = "AstroWorld";
 ---
@@ -14,9 +14,7 @@ const pageTitle = "AstroWorld";
     <title>{pageTitle}</title>
   </head>
   <body>
-    <header>
-      <Navigation />
-    </header>
+    <Header />
     <h1>{pageTitle}</h1>
     <p>My first application with astro. Enjoy!!</p>
 
