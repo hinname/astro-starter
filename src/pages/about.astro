@@ -19,6 +19,12 @@ const happy = true;
 const finished = false;
 const goal = 3;
 
+// CSS VARIABLES
+const skillColor = "navy";
+const skillFontWeight = "bold";
+const skillTextCase = "uppercase";
+
+
 function randomIntFromInterval(min: number, max: number): number { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -37,6 +43,17 @@ do {
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+            <style define:vars={{skillColor, skillFontWeight, skillTextCase}}>
+                  h1 {
+                        color: purple;
+                        font-size: 4rem;
+                  }
+                  .skill {
+                        color: var(--skillColor);
+                        font-weight: var(--skillFontWeight);
+                        text-transform: var(--skillTextCase);
+                  }
+            </style>
 	</head>
 	<body>
             <header>
@@ -66,7 +83,7 @@ do {
             </ul>
             <p>My skills are:</p>
             <ul>
-                  {skills.map((skill) => <li>{skill}</li>)}
+                  {skills.map((skill) => <li class="skill">{skill}</li>)}
             </ul>
             {happy && <p>I am happy to be learning Astro!</p>}
             {finished && <p>I finished this tutorial!</p>}
