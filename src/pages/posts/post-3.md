@@ -1,11 +1,11 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: My Third Blog Post
-author: Hinkami
-description: "I had some challenges, but asking in the community really helped!"
+title: 'My Third Blog Post'
+author: 'Hinname'
+description: 'I had some challenges, but asking in the community really helped!'
 image:
-    url: "https://docs.astro.build/assets/rays.webp"
-    alt: "Thumbnail of Astro rays."
+    url: 'https://docs.astro.build/assets/rays.webp'
+    alt: 'Thumbnail of Astro rays.'
 pubDate: 2024-02-11
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
