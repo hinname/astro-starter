@@ -1,0 +1,13 @@
+---
+import '../../styles/tag.css';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { uniqueTags } from "../../utils.astro";
+const pageTitle = "Tag Index";
+---
+<BaseLayout pageTitle={pageTitle}>
+  <div class="tags">
+    {uniqueTags.map((tag) => (
+      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
+</BaseLayout>
