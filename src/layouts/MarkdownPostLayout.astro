@@ -1,6 +1,20 @@
 ---
+import type { MarkdownLayoutProps } from 'astro';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
+
+type Props = MarkdownLayoutProps<{
+  // Define frontmatter props here
+  title: string;
+  pubDate: string;
+  description: string;
+  author: string;
+  image: {
+    url: string;
+    alt: string;
+  };
+}>;
+
 const { frontmatter } = Astro.props;
 ---
 <Header />
