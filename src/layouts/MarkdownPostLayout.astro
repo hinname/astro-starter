@@ -25,7 +25,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     day: 'numeric'
 }).format(date);
 ---
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout pageTitle={frontmatter.title} hasFooter={false}>
   <p>Published on: {formattedDate}</p>
   <p><em>{frontmatter.description}</em></p>
   <p>Written by {frontmatter.author}</p>
