@@ -1,13 +1,12 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 interface Identity {
   firstName: string;
   country: string;
   occupation: string;
   hobbies: string[];
 }
+
 const pageTitle: string = "About Me";
 
 const identity: Identity = {
@@ -48,31 +47,17 @@ do {
   randomHobby2 = identity.hobbies[randomIntFromInterval(0, 4)];
 } while (randomHobby2 === randomHobby1);
 ---
+<BaseLayout pageTitle="About Me" titleClassName="aboutTitle">
+  <style slot="styles" define:vars={{ skillColor, skillFontWeight, skillTextCase }}>
+    .skill {
+      color: var(--skillColor);
+      font-weight: var(--skillFontWeight);
+      text-transform: var(--skillTextCase);
+    }
+  </style>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <style define:vars={{ skillColor, skillFontWeight, skillTextCase }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--skillFontWeight);
-        text-transform: var(--skillTextCase);
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
 
-    <h1>{pageTitle}</h1>
-    <h2>... and my new Astro site!</h2>
+  <h2>... and my new Astro site!</h2>
 
     <p>
       I am working through Astro's introductory tutorial. This is the second
@@ -111,7 +96,4 @@ do {
         <p>My goal is not 3 days.</p>
       )
     }
-
-    <Footer />
-  </body>
-</html>
+</BaseLayout>
