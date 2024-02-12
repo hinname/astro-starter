@@ -1,4 +1,4 @@
-# Astro Starter Kit: Minimal
+# Astro Starter Project
 
 My first project using astro framework:
 https://astro-start-hinname.netlify.app/
