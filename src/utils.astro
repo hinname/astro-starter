@@ -5,7 +5,7 @@ export async function getAllPosts(): Promise<MarkdownInstance<Record<string, any
   return await Astro.glob("./pages/posts/*.md");
 }
 
-export const getUniqueTags = (allPosts: MarkdownInstance<Record<string, any>>[]) => {
+export function getUniqueTags(allPosts: MarkdownInstance<Record<string, any>>[]) {
   return [
     ...new Set(allPosts?.map(({ frontmatter: { tags } }) => tags).flat()),
   ];
@@ -16,7 +16,7 @@ interface GetFilteredPostsProps {
   posts: MarkdownInstance<Record<string, any>>[];
 }
 
-export const getFilteredPosts = ({ posts, tag }: GetFilteredPostsProps) => {
+export function getFilteredPosts({ posts, tag }: GetFilteredPostsProps) {
   return posts?.filter(({ frontmatter: { tags } }) => tags.includes(tag));
 };
 ---
