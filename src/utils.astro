@@ -1,22 +1,37 @@
 ---
 import type { MarkdownInstance } from "astro";
+import { getCollection } from "astro:content";
 
-export async function getAllPosts(): Promise<MarkdownInstance<Record<string, any>>[]> {
-  return await Astro.glob("./pages/posts/*.md");
+interface BlogPostData {
+  tags: string[];
+  title: string;
+  pubDate: Date;
+  description: string;
+  author: string;
+  image: {
+      url: string;
+      alt: string;
+  };
+  url: string;
 }
 
-export function getUniqueTags(allPosts: MarkdownInstance<Record<string, any>>[]) {
+export async function getAllPosts(): Promise<BlogPostData[]> {
+  const allPosts = await getCollection('posts');
+  return allPosts.map((post) => ({...post.data, url: `/posts/${post.slug}/`}));
+}
+
+export function getUniqueTags(allPosts: BlogPostData[]) {
   return [
-    ...new Set(allPosts?.map(({ frontmatter: { tags } }) => tags).flat()),
+    ...new Set(allPosts?.map(({ tags }) => tags).flat()),
   ];
 };
 
 interface GetFilteredPostsProps {
   tag: string;
-  posts: MarkdownInstance<Record<string, any>>[];
+  posts: BlogPostData[];
 }
 
 export function getFilteredPosts({ posts, tag }: GetFilteredPostsProps) {
-  return posts?.filter(({ frontmatter: { tags } }) => tags.includes(tag));
+  return posts?.filter(({ tags } ) => tags.includes(tag));
 };
 ---

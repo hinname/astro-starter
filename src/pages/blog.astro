@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogPost from "@components/BlogPost.astro";
-import { getAllPosts } from '../utils.astro';
+import { getAllPosts } from "src/utils.astro";
 const allPosts = await getAllPosts();
 const pageTitle = "My Astro Learning Blog";
 ---
@@ -9,6 +9,6 @@ const pageTitle = "My Astro Learning Blog";
   <p>This is where I will post about my journey learning Astro.</p>
 
   <ul>
-    {allPosts.map((post) => post.url && <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    {allPosts.map((post) => post.url && <BlogPost url={post.url} title={post.title} />)}
   </ul>
 </BaseLayout>

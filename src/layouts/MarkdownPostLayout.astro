@@ -1,24 +1,24 @@
 ---
 import '@styles/tag.css';
-import type { MarkdownLayoutProps } from 'astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-type Props = MarkdownLayoutProps<{
-  // Define frontmatter props here
-  title: string;
-  pubDate: string;
-  description: string;
-  author: string;
-  image: {
-    url: string;
-    alt: string;
-  };
-  tags: string[];
-}>;
+interface Props {
+  blogPostData: {
+    title: string;
+    pubDate: Date;
+    description: string;
+    author: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+  }
+}
 
-const { frontmatter } = Astro.props;
+const { blogPostData } = Astro.props;
 
-const date = new Date(frontmatter.pubDate);
+const date = new Date(blogPostData.pubDate);
 date.setDate(date.getDate() + 1);
 
 const formattedDate = new Intl.DateTimeFormat('en-US', {
@@ -27,14 +27,14 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     day: 'numeric'
 }).format(date);
 ---
-<BaseLayout pageTitle={frontmatter.title} hasFooter={false}>
+<BaseLayout pageTitle={blogPostData.title} hasFooter={false}>
   <p>Published on: {formattedDate}</p>
-  <p><em>{frontmatter.description}</em></p>
-  <p>Written by {frontmatter.author}</p>
-  <img src={frontmatter.image.url} width="250" alt={frontmatter.image.alt} />
+  <p><em>{blogPostData.description}</em></p>
+  <p>Written by {blogPostData.author}</p>
+  <img src={blogPostData.image.url} width="250" alt={blogPostData.image.alt} />
 
   <div class="tags">
-    {frontmatter.tags.map((tag) => (
+    {blogPostData.tags.map((tag) => (
       <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
     ))}
   </div>
