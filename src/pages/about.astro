@@ -47,7 +47,7 @@ do {
   randomHobby2 = identity.hobbies[randomIntFromInterval(0, 4)];
 } while (randomHobby2 === randomHobby1);
 ---
-<BaseLayout pageTitle="About Me" titleClassName="aboutTitle">
+<BaseLayout pageTitle={pageTitle} titleClassName="aboutTitle">
   <style slot="styles" define:vars={{ skillColor, skillFontWeight, skillTextCase }}>
     .skill {
       color: var(--skillColor);

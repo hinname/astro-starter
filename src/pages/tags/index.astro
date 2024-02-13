@@ -1,7 +1,9 @@
 ---
 import '@styles/tag.css';
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { uniqueTags } from "../../utils.astro";
+import { getAllPosts, getUniqueTags } from "../../utils.astro";
+const allPosts = await getAllPosts();
+const uniqueTags = getUniqueTags(allPosts);
 const pageTitle = "Tag Index";
 ---
 <BaseLayout pageTitle={pageTitle}>

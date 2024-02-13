@@ -2,11 +2,13 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogPost from '@components/BlogPost.astro';
 
-import { allPosts, uniqueTags } from '../../utils.astro';
+import { getAllPosts, getFilteredPosts, getUniqueTags } from '../../utils.astro';
 
 export async function getStaticPaths() {
+  const allPosts = await getAllPosts();
+  const uniqueTags = getUniqueTags(allPosts);
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    const filteredPosts = getFilteredPosts({posts: allPosts, tag});
     return {
       params: { tag },
       props: { posts: filteredPosts },
