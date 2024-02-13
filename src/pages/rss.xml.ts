@@ -1,28 +1,18 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss';
-import type { RSSFeedItem } from '@astrojs/rss';
+import rss from '@astrojs/rss';
 import { getAllPosts } from 'src/utils.astro';
 
 export async function GET(context: any) {
-    const title = 'Astro Learner | Blog';
-    const description = 'My journey learning Astro';
-
-    const items = await getAllPosts();
-    const itemsFixed: RSSFeedItem[] = items.map((item) => {
-        const fixedItem = {
-            ...item,
-            link: item.url,
-            title: item.title,
-            pubDate: item.pubDate,
-            description: item.description ? item.description : description,
-        };
-        return fixedItem;
-    });
-
+    const posts = await getAllPosts();
     return rss({
-        title: title,
-        description: description,
+        title: 'Astro Learner | Blog',
+        description: 'My journey learning Astro',
         site: context.site,
-        items: itemsFixed,
+        items: posts.map((post) => ({
+          title: post.title,
+          pubDate: post.pubDate,
+          description: post.description,
+          link: post.url,
+        })),
         customData: `<language>en-us</language>`,
     });
 }
