@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Greeting from "@components/Greeting.tsx";
 const pageTitle = "AstroWorld";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <h2>My first application with astro. Enjoy!!</h2>
+  <Greeting client:load messages={["Hi", "Hello World", "Hey there"]} />
 </BaseLayout>
