@@ -1,14 +1,13 @@
 ---
 interface Props {
   pageTitle: string;
-  titleClassName?: string;
   hasFooter?: boolean;
 }
 
 import "@styles/global.css";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-const { pageTitle, titleClassName, hasFooter = true } = Astro.props;
+const { pageTitle, hasFooter = true } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,7 +21,7 @@ const { pageTitle, titleClassName, hasFooter = true } = Astro.props;
   </head>
   <body>
     <Header />
-    <h1 class={titleClassName}>{pageTitle}</h1>
+    <h1 class='text-xl5 font-bold text-violet-800'>{pageTitle}</h1>
     <slot />
     {hasFooter && <Footer />}
   </body>
