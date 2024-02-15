@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import { getAllPosts } from 'src/utils.astro';
+import { getAllPosts } from '../utils.astro';
 
 export async function GET(context: any) {
     const posts = await getAllPosts();
