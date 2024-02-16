@@ -2,21 +2,9 @@
 import Social from './Social.astro'
 ---
 
-<style>
-  footer {
-    display: flex;
-    margin-top: 2rem;
-  }
-  ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-</style>
-
-<footer>
+<footer class="flex mt-12">
   <p>Follow me on other platforms:</p>
-  <ul>
+  <ul class="flex gap-3 mx-3">
     <li><Social platformUrl='github' username='hinname' platform='Github' /></li>
     <li><Social platformUrl='linkedin' username='in/herivelton-borges-da-costa-b724361a4/' platform='LinkedIn' /></li>
     <li><Social platformUrl='instagram' username='herivelton_costa1' platform='Instagram'></li>
