@@ -20,21 +20,17 @@ const skills: string[] = [
   "HTML",
   "CSS",
   "JavaScript",
-  "Typescript",
+  "TypeScript",
   "Angular",
   "Vue",
   "Astro",
   "C#",
   "ASP .NET",
+  "SQL",
 ];
 const happy = true;
 const finished = true;
 const goal = 3;
-
-// CSS VARIABLES
-const skillColor = "navy";
-const skillFontWeight = "bold";
-const skillTextCase = "uppercase";
 
 function randomIntFromInterval(min: number, max: number): number {
   // min and max included
@@ -48,15 +44,8 @@ do {
 } while (randomHobby2 === randomHobby1);
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <style slot="styles" define:vars={{ skillColor, skillFontWeight, skillTextCase }}>
-    .skill {
-      color: var(--skillColor);
-      font-weight: var(--skillFontWeight);
-      text-transform: var(--skillTextCase);
-    }
-  </style>
   
-  <h2>... and my new Astro site!</h2>
+  <h2 class="text-2xl mb-3">... and my new Astro site!</h2>
 
     <p>
       I am working through Astro's introductory tutorial. This is the second
@@ -68,8 +57,8 @@ do {
       back and see how my journey is going!
     </p>
 
-    <p>Here are a few facts about me:</p>
-    <ul>
+    <p class="mt-6 mb-3">Here are a few facts about me:</p>
+    <ul class="list-disc mx-4">
       <li>My name is {identity.firstName}.</li>
       <li>
         I live in {identity.country} and I work as a {identity.occupation}.
@@ -77,20 +66,21 @@ do {
       {
         identity.hobbies.length >= 2 && (
           <li>
-            Two of my hobbies are: {randomHobby1} and {randomHobby2}
+            Two of my hobbies are:  <b>{randomHobby1}</b> and <b>{randomHobby2}</b>
           </li>
         )
       }
     </ul>
-    <p>My skills are:</p>
-    <ul>
-      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    <p class="mt-3 font-semibold">My skills are:</p>
+    <ul class="my-3 flex flex-wrap items-center content-center w-full">
+      {skills.map((skill) => <li class="px-4 py-1 mx-2 my-2 w-1/6 
+      rounded bg-violet-500 text-lg text-white text-center">{skill}</li>)}
     </ul>
     {happy && <p>I am happy to be learning Astro!</p>}
     {finished && <p>I finished this tutorial!</p>}
     {
       goal === 3 ? (
-        <p>My goal is to finish in 3 days.</p>
+        <p>My goal is to finish in 3 days. {finished && '(Done!)'}</p>
       ) : (
         <p>My goal is not 3 days.</p>
       )

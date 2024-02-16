@@ -25,7 +25,7 @@ export function getUniqueTags(allPosts: BlogPostData[]) {
   ];
 };
 
-interface GetFilteredPostsProps {
+export interface GetFilteredPostsProps {
   tag: string;
   posts: BlogPostData[];
 }
@@ -34,3 +34,4 @@ export function getFilteredPosts({ posts, tag }: GetFilteredPostsProps) {
   return posts?.filter(({ tags } ) => tags.includes(tag));
 };
 ---
+
