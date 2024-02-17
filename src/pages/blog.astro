@@ -6,9 +6,9 @@ const allPosts = await getAllPosts();
 const pageTitle = "My Astro Learning Blog";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
+  <h2 class="text-xl mb-3">This is where I will post about my journey learning Astro.</h2>
 
-  <ul>
+  <ul class="list-disc mx-4">
     {allPosts.map((post) => post.url && <BlogPost url={post.url} title={post.title} />)}
   </ul>
 </BaseLayout>
